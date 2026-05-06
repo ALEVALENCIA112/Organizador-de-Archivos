@@ -7,7 +7,18 @@ import shutil
 ruta = os.path.expanduser('~') + '/Downloads'
 
 # carpetas a crear para organizar los archivos
-carpetas = ["Imagenes", "Documentos", "Videos", "Audio", "Programas", "Otros", "Comprimidos"]
+carpetas = ["Imagenes",
+            "Docs Word",
+            "Docs Excel",
+            "Docs PowerPoint",
+            "Docs de Texto",
+            "Docs PDF",
+            "Videos",
+            "Audio",
+            "Programas",
+            "Otros",
+            "Comprimidos",
+            "Bases de Datos"]
 
 # crear carpetas en la ruta
 # si la carpeta ya existe, no se crea de nuevo
@@ -28,12 +39,17 @@ for carpeta in carpetas:
 tipos = {
 
     "Imagenes": ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.tiff'],
-    "Documentos": ['.pdf', '.docx', '.txt', '.xlsx', '.pptx'],
+    "Docs Word": ['.docx', '.doc', '.odt', '.dot', '.docm', 'xml'],
+    "Docs Excel": ['.xlsx', '.xls', '.csv'],
+    "Docs PowerPoint": ['.pptx', '.ppt'],
+    "Docs de Texto": ['.txt', '.rtf', '.odt'],
+    "Docs PDF": ['.pdf'],
     "Videos": ['.mp4', '.avi', '.mkv', '.mov', '.flv'],
     "Audio": ['.mp3', '.wav', '.aac', '.flac', '.ogg'],
     "Programas": ['.exe', '.msi', '.dmg', '.deb', '.rpm'],
-    "Otros": [],
-    "Comprimidos": ['.zip', '.rar', '.7z', '.tar', '.gz']
+    "Comprimidos": ['.zip', '.rar', '.7z', '.tar', '.gz'],
+    "Bases de Datos": ['.sql', '.db', '.sqlite', '.mdb', '.accdb'],
+    "Otros": []
 
 }
 
@@ -50,6 +66,14 @@ for archivo in os.listdir(ruta):
         # se obtiene la extension del archivo y se convierte a minúscula para evitar problemas
                             # separa el nombre del archivo de su extensión, y se toma la extensión (incluyendo el punto) y se convierte a minúscula
         extension = os.path.splitext(archivo)[1].lower()
+
+        # anteriormente comprobaba la pertenencia de la extensión y de no haber encontrado ninguna se movia a otros, se realizaba ese proceso al comprobar cada carpeta
+        # por lo que daba un error ya que intentaba moverlo en cada iteracion
+
+        # Creación de una bandera para verificar si el archivo se movio
+        # Resuelve el problema de comprobar el archivo y si no existe entonces enviarlo a otros en cada iteracion 
+        movido = False
+        
 
         # se recorre el diccionario de tipos
         # Carpeta corresponde al nombre declarado del arreglo, y extensiones corresponde a la lista de extensiones declarada en el arreglo (.jpg, .png, etc)
@@ -73,14 +97,17 @@ for archivo in os.listdir(ruta):
                 # se imprime el archivo movido y la carpeta a la que fue movido
                 print(f"Movido: {archivo} -> {carpeta}")
 
+                movido = True
+                break
+
             # si la extensión del archivo no coincide con ninguna de las extensiones de las carpetas, se mueve a la carpeta "Otros"
-            else:
+        if not movido:
 
-                # se crea la ruta completa de la carpeta "Otros"
-                carpeta_path = os.path.join(ruta, "Otros")
+            # se crea la ruta completa de la carpeta "Otros"
+            carpeta_path = os.path.join(ruta, "Otros")
 
-                # se mueve el archivo a la carpeta "Otros"
-                shutil.move(archivo_path, os.path.join(carpeta_path, archivo))
+            # se mueve el archivo a la carpeta "Otros"
+            shutil.move(archivo_path, os.path.join(carpeta_path, archivo))
 
-                # se imprime el archivo movido y la carpeta a la que fue movido
-                print(f"Movido: {archivo} -> {carpeta}")
+            # se imprime el archivo movido y la carpeta a la que fue movido
+            print(f"Movido: {archivo} -> Otros")
