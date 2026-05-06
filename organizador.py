@@ -42,7 +42,7 @@ tipos = {
     "Docs Word": ['.docx', '.doc', '.odt', '.dot', '.docm', 'xml'],
     "Docs Excel": ['.xlsx', '.xls', '.csv'],
     "Docs PowerPoint": ['.pptx', '.ppt'],
-    "Docs de Texto": ['.txt', '.rtf', '.odt'],
+    "Docs de Texto": ['.txt', '.rtf', '.odt', '.md'],
     "Docs PDF": ['.pdf'],
     "Videos": ['.mp4', '.avi', '.mkv', '.mov', '.flv'],
     "Audio": ['.mp3', '.wav', '.aac', '.flac', '.ogg'],
