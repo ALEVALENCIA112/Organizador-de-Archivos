@@ -8,3 +8,5 @@ Actualmente se encuentra en desarrollo por lo cual se seguiran añadiendo mejora
 
 Este script es desarrollado con el fin de aprender procesos de automatización a la ves que se busca maneras de facilitar
 la vida diaria en el uso de la PC.
+
+¡¡¡Se ha creado su ejecutable en la carpeta dist!!!

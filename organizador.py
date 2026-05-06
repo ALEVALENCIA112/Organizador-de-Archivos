@@ -111,3 +111,5 @@ for archivo in os.listdir(ruta):
 
             # se imprime el archivo movido y la carpeta a la que fue movido
             print(f"Movido: {archivo} -> Otros")
+
+input("\nPresiona ENTER para salir...")
