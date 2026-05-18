@@ -3,15 +3,30 @@ from tkinter import messagebox, filedialog, ttk
 
 
 class OrganizadorView:
+
+    VERSION = "1.0.0"
+    COPYRIGHT = "© 2026 CRAV - Todos los derechos reservados"
     def __init__(self):
         self.root = tk.Tk()
         self.root.title("Organizador de Archivos")
-        self.root.geometry("500x250")
+        self.root.geometry("450x300")
         self.root.resizable(False, False)
+
+        self.version_y_copyright()
 
         self.ruta_seleccionada = ""
 
         self._crear_componentes()
+
+    def version_y_copyright(self):
+        """Agrega un label con la versión y el copyright en la parte inferior de la ventana."""
+        lbl = tk.Label(
+            self.root,
+            text=f"Versión {self.VERSION}\t{self.COPYRIGHT}",
+            font=("Arial", 8),
+            fg="#555555"
+        )
+        lbl.pack(side="bottom", anchor="w", padx=10, pady=5)
 
     def _crear_componentes(self):
         # Etiqueta de título
