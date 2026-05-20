@@ -10,3 +10,8 @@ Este script es desarrollado con el fin de aprender procesos de automatización a
 la vida diaria en el uso de la PC.
 
 ¡¡¡Se ha creado su ejecutable en la carpeta dist!!!
+
+Version:
+
+1.0.0: Versión inicial
+1.0.1: Mejora de GUI

@@ -34,7 +34,6 @@ class OrganizadorController:
         self.organizar_archivos_con_progreso()
         
         # Al finalizar, limpiamos la vista y notificamos
-        self.view.actualizar_progreso(0, "Proceso terminado.")
         self.view.desbloquear_controles()
         self.view.mostrar_exito("La carpeta ha sido organizada correctamente según sus extensiones.")
 
